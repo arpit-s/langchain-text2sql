@@ -1,0 +1,124 @@
+E-Commerce Business Analysis Guide
+
+1. Business Overview
+-------------------
+This e-commerce platform tracks various aspects of online retail operations including:
+- Product catalog and inventory management
+- Customer behavior and demographics
+- Order processing and fulfillment
+- Distribution center operations
+- User engagement and website traffic
+
+2. Key Business Metrics
+----------------------
+a) Sales Performance
+   - Gross Merchandise Value (GMV) = Sum of all order values
+   - Average Order Value (AOV) = Total revenue / Number of orders
+   - Sales by category/department = Revenue breakdown by product segments
+   - Product margin analysis = (Retail price - Cost) / Retail price
+   - Seasonal sales patterns = Monthly/quarterly revenue trends
+
+b) Customer Metrics
+   - Customer Acquisition Cost (CAC) = Marketing spend by traffic source
+   - Customer Demographics = Age distribution, gender split, geographical spread
+   - Customer Lifetime Value (CLV) = Average revenue per user over time
+   - User registration trends = New user growth rate
+   - Geographic penetration = Orders and users by country/city
+
+c) Operational Efficiency
+   - Order fulfillment time = Time between order creation and delivery
+   - Return rate = Number of returns / Total orders
+   - Inventory turnover = Sales volume / Average inventory level
+   - Distribution center efficiency = Orders processed per center
+   - Stock availability = Items in stock vs. total catalog
+
+d) Website Performance
+   - User engagement = Session duration and sequence
+   - Traffic sources = Effectiveness of different marketing channels
+   - Conversion rate = Orders / Total sessions
+   - Browse-to-buy ratio = Purchases / Browse events
+   - Geographic traffic patterns = User locations and browsing behaviors
+
+3. Table Relationships and Business Context
+-----------------------------------------
+a) Orders & Order Items
+   - Orders table tracks the complete order lifecycle
+   - Status changes (created → shipped → delivered → returned) help monitor fulfillment
+   - Order items contain individual product details and pricing
+   - Together they provide order composition and profitability insights
+
+b) Products & Inventory
+   - Products table is the master catalog with pricing and categorization
+   - Inventory items track individual units through the supply chain
+   - Distribution center assignment shows geographical stock distribution
+   - Cost and retail price spread indicates margin potential
+
+c) Users & Events
+   - Users table contains customer demographics and acquisition data
+   - Events table tracks all website interactions
+   - Session data helps understand user journey and behavior
+   - Traffic sources indicate marketing channel effectiveness
+
+d) Distribution Centers
+   - Geographic distribution of fulfillment capabilities
+   - Inventory allocation across regions
+   - Service area coverage and delivery efficiency
+
+4. Analysis Approaches
+---------------------
+a) Cohort Analysis
+   - Group users by registration date
+   - Track purchasing patterns over time
+   - Measure customer retention and repeat purchase rates
+   - Identify high-value customer segments
+
+b) Funnel Analysis
+   - Track progression: Browse → Add to Cart → Purchase
+   - Identify drop-off points in user journey
+   - Measure conversion rates by traffic source
+   - Analyze impact of pricing on conversion
+
+c) Inventory Analysis
+   - Stock level optimization
+   - Reorder point calculation
+   - Seasonal demand planning
+   - Distribution center capacity planning
+
+d) Geographic Analysis
+   - Market penetration by region
+   - Delivery time optimization
+   - Regional product preferences
+   - Expansion opportunity identification
+
+5. Common Business Questions
+---------------------------
+- What are the best-selling products and categories?
+- Which customer segments generate the most revenue?
+- How effective are different marketing channels?
+- What is the operational efficiency of distribution centers?
+- Where are the opportunities for market expansion?
+- How can we optimize inventory levels?
+- What factors impact customer retention?
+- How can we improve delivery times?
+
+6. Data Usage Guidelines
+-----------------------
+- Always consider seasonality in trend analysis
+- Account for regional differences in customer behavior
+- Compare metrics across similar time periods
+- Consider both absolute values and growth rates
+- Factor in product category differences
+- Account for marketing campaign impacts
+- Consider external factors (holidays, promotions)
+- Use appropriate aggregation levels for analysis
+
+7. Performance Improvement Opportunities
+-------------------------------------
+- Optimize product mix based on margin analysis
+- Improve inventory allocation across distribution centers
+- Enhance marketing channel effectiveness
+- Reduce delivery times through network optimization
+- Increase customer retention through personalization
+- Optimize pricing strategy by category
+- Improve website conversion rates
+- Expand into high-potential markets

@@ -1,0 +1,62 @@
+[
+    {
+        "question": "What are the event types being stored in this month?",
+        "sql": "SELECT DISTINCT event_type FROM `bigquery-public-data.thelook_ecommerce.events` WHERE TIMESTAMP_TRUNC(created_at, MONTH) = TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), MONTH)"
+    },
+    {
+        "question": "How many users registered in the last 30 days?",
+        "sql": "SELECT COUNT(*) as new_users FROM `bigquery-public-data.thelook_ecommerce.users` WHERE created_at >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)"
+    },
+    {
+        "question": "What are the top 5 most expensive products?",
+        "sql": "SELECT id, name, retail_price FROM `bigquery-public-data.thelook_ecommerce.products` ORDER BY retail_price DESC LIMIT 5"
+    },
+    {
+        "question": "What is the total revenue by product category?",
+        "sql": "SELECT p.category, SUM(oi.sale_price) as total_revenue FROM `bigquery-public-data.thelook_ecommerce.order_items` oi JOIN `bigquery-public-data.thelook_ecommerce.products` p ON oi.product_id = p.id GROUP BY p.category ORDER BY total_revenue DESC"
+    },
+    {
+        "question": "Which distribution center has the most inventory items?",
+        "sql": "SELECT dc.name, COUNT(ii.id) as item_count FROM `bigquery-public-data.thelook_ecommerce.distribution_centers` dc JOIN `bigquery-public-data.thelook_ecommerce.inventory_items` ii ON dc.id = ii.product_distribution_center_id GROUP BY dc.name ORDER BY item_count DESC LIMIT 1"
+    },
+    {
+        "question": "What is the average order value?",
+        "sql": "SELECT AVG(sale_price) as avg_order_value FROM `bigquery-public-data.thelook_ecommerce.order_items`"
+    },
+    {
+        "question": "How many orders were placed by gender?",
+        "sql": "SELECT u.gender, COUNT(o.order_id) as order_count FROM `bigquery-public-data.thelook_ecommerce.orders` o JOIN `bigquery-public-data.thelook_ecommerce.users` u ON o.user_id = u.id GROUP BY u.gender"
+    },
+    {
+        "question": "What are the top 10 cities by number of orders?",
+        "sql": "SELECT u.city, COUNT(o.order_id) as order_count FROM `bigquery-public-data.thelook_ecommerce.orders` o JOIN `bigquery-public-data.thelook_ecommerce.users` u ON o.user_id = u.id GROUP BY u.city ORDER BY order_count DESC LIMIT 10"
+    },
+    {
+        "question": "What is the distribution of product categories in inventory?",
+        "sql": "SELECT p.category, COUNT(ii.id) as item_count FROM `bigquery-public-data.thelook_ecommerce.inventory_items` ii JOIN `bigquery-public-data.thelook_ecommerce.products` p ON ii.product_id = p.id GROUP BY p.category ORDER BY item_count DESC"
+    },
+    {
+        "question": "What is the monthly trend of orders in the last 6 months?",
+        "sql": "SELECT FORMAT_TIMESTAMP('%Y-%m', created_at) as month, COUNT(order_id) as order_count FROM `bigquery-public-data.thelook_ecommerce.orders` WHERE DATE(created_at) >= DATE_SUB(CURRENT_DATE(), INTERVAL 6 MONTH) GROUP BY month ORDER BY month"
+    },
+    {
+        "question": "Which product has the highest profit margin?",
+        "sql": "SELECT id, name, SAFE_DIVIDE(retail_price - cost, retail_price) as profit_margin FROM `bigquery-public-data.thelook_ecommerce.products` WHERE retail_price > 0 ORDER BY profit_margin DESC LIMIT 1"
+    },
+    {
+        "question": "What is the average time between order creation and shipping?",
+        "sql": "SELECT AVG(TIMESTAMP_DIFF(shipped_at, created_at, HOUR)) as avg_processing_time_hours FROM `bigquery-public-data.thelook_ecommerce.orders` WHERE shipped_at IS NOT NULL AND created_at IS NOT NULL"
+    },
+    {
+        "question": "How many users are there by country?",
+        "sql": "SELECT country, COUNT(*) as user_count FROM `bigquery-public-data.thelook_ecommerce.users` GROUP BY country ORDER BY user_count DESC"
+    },
+    {
+        "question": "What is the age distribution of users?",
+        "sql": "SELECT FLOOR(age/10)*10 as age_group, COUNT(*) as user_count FROM `bigquery-public-data.thelook_ecommerce.users` WHERE age IS NOT NULL GROUP BY age_group ORDER BY age_group"
+    },
+    {
+        "question": "Which traffic source brings the most users?",
+        "sql": "SELECT traffic_source, COUNT(*) as user_count FROM `bigquery-public-data.thelook_ecommerce.users` GROUP BY traffic_source ORDER BY user_count DESC LIMIT 1"
+    }
+] 
